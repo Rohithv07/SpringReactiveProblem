@@ -19,21 +19,45 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Contains the end points to update and delete the account details
+ * 
+ * @author group 5
+ *
+ */
 @RestController
 @Tag(name = "Update Account Table", description = "Apis for updating and deleting the account")
 public class AccountUpdateController {
 
+	/**
+	 * The service interface for the account update
+	 * 
+	 */
 	@Autowired
 	private AccountUpdateService accountUpdateService;
-	
+
+	/**
+	 * The rest end point which updates the account details for the provided id
+	 * 
+	 * @param account
+	 * @param id
+	 * @return {@link ResponseMessage}
+	 */
 	@PutMapping("/account/{id}")
 	@Operation(description = "Endpoint for updating the account", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody())
-	public Mono<ResponseEntity<ResponseMessage>> updateAccountDetails(@RequestBody Accounts account, @PathVariable Integer id) {
+	public Mono<ResponseEntity<ResponseMessage>> updateAccountDetails(@RequestBody Accounts account,
+			@PathVariable Integer id) {
 		account.setAcc_id(id);
 		accountUpdateService.updateAccount(account);
 		return Mono.just(ResponseEntity.ok().body(this.getResponse(account.getAcc_id(), "Account is Updated")));
 	}
-	
+
+	/**
+	 * The rest end point which deletes the account details for the provided id
+	 * 
+	 * @param id
+	 * @return {@link ResponseMessage}
+	 */
 	@DeleteMapping("/account/{id}")
 	@Operation(description = "Endpoint for deleting the account")
 	public Mono<ResponseEntity<ResponseMessage>> deleteAccount(@PathVariable Integer id) {
@@ -42,13 +66,19 @@ public class AccountUpdateController {
 
 		return Mono.just(ResponseEntity.accepted().body(response));
 	}
-	
+
 	@GetMapping("/account")
 	public Flux<Accounts> getAllAccount() {
 		return accountUpdateService.getAllAccounts();
 	}
-	
-	
+
+	/**
+	 * The fields which is used as the response message for the API
+	 * 
+	 * @param id
+	 * @param message
+	 * @return {@link ResponseMessage}
+	 */
 	private ResponseMessage getResponse(Integer id, String message) {
 		ResponseMessage response = new ResponseMessage();
 		response.setId(id);
