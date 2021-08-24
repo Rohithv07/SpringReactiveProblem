@@ -11,7 +11,7 @@ public interface LoginRegistrationService {
 	
 	public Mono<Accounts> registerAccount(Accounts account);
 
-	public Mono<Boolean> checkPassword(Login loginCredentials);
+	public Mono<Boolean> checkCredentials(Login loginCredentials);
 	
 	
 	
