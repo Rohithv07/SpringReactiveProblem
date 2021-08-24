@@ -43,7 +43,7 @@ public class AccountUpdateController {
 	 * @param id
 	 * @return {@link ResponseMessage}
 	 */
-	@PutMapping("/account/{id}")
+	@PutMapping("/update/{id}")
 	@Operation(description = "Endpoint for updating the account", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody())
 	public Mono<ResponseEntity<ResponseMessage>> updateAccountDetails(@RequestBody Accounts account,
 			@PathVariable Integer id) {
@@ -58,7 +58,7 @@ public class AccountUpdateController {
 	 * @param id
 	 * @return {@link ResponseMessage}
 	 */
-	@DeleteMapping("/account/{id}")
+	@DeleteMapping("/update/{id}")
 	@Operation(description = "Endpoint for deleting the account")
 	public Mono<ResponseEntity<ResponseMessage>> deleteAccount(@PathVariable Integer id) {
 		accountUpdateService.deleteAccount(id);
@@ -67,7 +67,7 @@ public class AccountUpdateController {
 		return Mono.just(ResponseEntity.accepted().body(response));
 	}
 
-	@GetMapping("/account")
+	@GetMapping("/update")
 	public Flux<Accounts> getAllAccount() {
 		return accountUpdateService.getAllAccounts();
 	}

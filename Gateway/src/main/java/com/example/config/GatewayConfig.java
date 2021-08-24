@@ -18,7 +18,8 @@ public class GatewayConfig {
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder) {
 		return builder.routes().route("auth", r -> r.path("/auth/**").filters(f -> f.filter(filter)).uri("lb://auth"))
-				.route("update", r -> r.path("/account/**").filters(f -> f.filter(filter)).uri("lb://account"))
+				.route("update", r -> r.path("/update/**").filters(f -> f.filter(filter)).uri("lb://update"))
+				.route("loan", r -> r.path("/loan/**").filters(f -> f.filter(filter)).uri("lb://loan"))
 				.build();
 	}
 	

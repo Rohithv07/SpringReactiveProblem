@@ -29,11 +29,47 @@ public class LoginRegistrationServiceImpl implements LoginRegistrationService {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginRegistrationServiceImpl.class);
 
+//	@Override
+//	public Mono<Boolean> checkCredentials(Login loginCredentials) {
+//		List<Accounts> accountVerified = new ArrayList<>();
+//		Flux<Accounts> account = accRepo.findByUsernameAndPassword(loginCredentials.getUsername(),
+//				loginCredentials.getPassword());
+////		Optional<String> optionalUsername = accRepo.getUsername(loginCredentials.getUsername()).blockOptional();
+////		String username = optionalUsername.get();
+////		if (username == null || username.length() == 0)
+////			return Mono.just(false);
+////		Optional<String> optionalPassword = accRepo.getPasswordForGivenUsername(loginCredentials.getUsername()).blockOptional();
+////		String password = optionalPassword.get();
+////		if (password == null || password.length() == 0 || !password.equals(loginCredentials.getPassword())) {
+////			return Mono.just(false);
+////		}
+////		if (username.equalsIgnoreCase(loginCredentials.getUsername()) && password.equals(loginCredentials.getPassword())) {
+////				return Mono.just(true);
+////		}
+////		return Mono.just(false);
+//		account.subscribe(a -> System.out.println(a));
+//		account.subscribe(accountVerified::add);
+//		logger.info(accountVerified.toString());
+//		try {
+//			Mono<Boolean> loginSuccessful = account == null ? null : account.map(a -> a != null).elementAt(0);
+//			return loginSuccessful;
+//			//return true;
+//		} catch (IndexOutOfBoundsException e) {
+//			return Mono.just(false);
+//			//return false;
+//		}
+//	}
+//	
 	@Override
-	public Mono<Boolean> checkCredentials(Login loginCredentials) {
+	public Flux<Accounts> checkCredentials(Login loginCredentials) {
 		List<Accounts> accountVerified = new ArrayList<>();
 		Flux<Accounts> account = accRepo.findByUsernameAndPassword(loginCredentials.getUsername(),
 				loginCredentials.getPassword());
+		String username = "";
+		account.subscribe(a -> a.getUsername());
+		account.subscribe(accountVerified::add);
+		//account.subscribe(a-> accountVerified.add(a));
+		System.out.println(accountVerified);
 //		Optional<String> optionalUsername = accRepo.getUsername(loginCredentials.getUsername()).blockOptional();
 //		String username = optionalUsername.get();
 //		if (username == null || username.length() == 0)
@@ -47,17 +83,18 @@ public class LoginRegistrationServiceImpl implements LoginRegistrationService {
 //				return Mono.just(true);
 //		}
 //		return Mono.just(false);
-		account.subscribe(a -> System.out.println(a));
-		account.subscribe(accountVerified::add);
-		logger.info(accountVerified.toString());
-		try {
-			Mono<Boolean> loginSuccessful = account == null ? null : account.map(a -> a != null).elementAt(0);
-			return loginSuccessful;
-			//return true;
-		} catch (IndexOutOfBoundsException e) {
-			return Mono.just(false);
-			//return false;
-		}
+		return account;
+//		account.subscribe(a -> System.out.println(a));
+//		account.subscribe(accountVerified::add);
+//		logger.info(accountVerified.toString());
+//		try {
+//			Mono<Boolean> loginSuccessful = account == null ? null : account.map(a -> a != null).elementAt(0);
+//			return loginSuccessful;
+//			//return true;
+//		} catch (IndexOutOfBoundsException e) {
+//			return Mono.just(false);
+//			//return false;
+//		}
 	}
 
 }
