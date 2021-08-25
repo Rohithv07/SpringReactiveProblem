@@ -12,7 +12,7 @@ public interface LoginRegistrationService {
 	
 	public Mono<Accounts> registerAccount(Accounts account);
 
-	public Flux<Accounts> checkCredentials(Login loginCredentials);
+	public boolean checkCredentials(Login loginCredentials);
 	
 	
 	
