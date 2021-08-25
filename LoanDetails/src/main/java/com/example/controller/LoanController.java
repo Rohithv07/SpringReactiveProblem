@@ -19,11 +19,14 @@ import com.example.model.Loan;
 import com.example.model.ResponseMessage;
 import com.example.service.LoanService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/loan")
+@Tag(name = "Loan Account Table", description = "Apis for updating and deleting the account")
 public class LoanController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoanController.class);
@@ -32,6 +35,7 @@ public class LoanController {
 	LoanService service;
 
 	@PostMapping("/apply")
+	@Operation(description = "Endpoint for applying the loan", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody())
 	public Mono<ResponseEntity<ResponseMessage>> applyLoan(@RequestBody Loan loan) throws URISyntaxException {
 		URI location = null;
 		try {
@@ -39,22 +43,23 @@ public class LoanController {
 			StringBuilder locationStr = new StringBuilder();
 			saveloan.subscribe(e -> locationStr.append("http://localhost:8080/loan/").append(e.getLoanId()));
 			location = new URI(locationStr.toString());
-			return Mono.just(ResponseEntity.created(location)
-					.body(this.getResponse("Loan Applied!!!", HttpStatus.OK)));
+			return Mono.just(ResponseEntity.created(location).body(this.getResponse("Loan Applied!!!", HttpStatus.OK)));
 		} catch (Exception ex) {
-			return Mono.just(ResponseEntity.created(location).body(
-					this.getResponse( "Failed to Apply Loan!!!", HttpStatus.INTERNAL_SERVER_ERROR)));
+			return Mono.just(ResponseEntity.created(location)
+					.body(this.getResponse("Failed to Apply Loan!!!", HttpStatus.INTERNAL_SERVER_ERROR)));
 
 		}
 
 	}
 
 	@GetMapping("/{id}")
+	@Operation(description = "Endpoint for getting all loan details of loan id", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody())
 	public Mono<Loan> getLoanDetails(@PathVariable Integer id) {
 		return service.getLoanDetails(id);
 	}
 
 	@GetMapping("/getAll/{id}")
+	@Operation(description = "getting all loan details of account id", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody())
 	public Flux<Loan> getLoanDetailsByAccId(@PathVariable Integer id) {
 		return service.getLoanDetailsByAccId(id);
 	}

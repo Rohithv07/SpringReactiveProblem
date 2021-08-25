@@ -43,7 +43,7 @@ public class LoginRegistrationServiceImpl implements LoginRegistrationService {
 //		account.subscribe(a -> System.out.println(a));
 		account.subscribe(accountVerified::add);
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
