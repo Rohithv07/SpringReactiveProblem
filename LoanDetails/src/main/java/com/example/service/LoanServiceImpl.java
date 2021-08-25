@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 public class LoanServiceImpl implements LoanService {
 
 	@Autowired
-	LoanDao dao;
+	private LoanDao dao;
 
 	@Override
 	public Mono<Loan> applyLoan(Loan loan) {
