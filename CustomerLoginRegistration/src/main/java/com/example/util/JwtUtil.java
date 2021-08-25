@@ -35,8 +35,8 @@ public class JwtUtil {
 		return null;
 	}
 
-	public String generateToken(String id) {
-		Claims claims = Jwts.claims().setSubject(id);
+	public String generateToken(String username, String password) {
+		Claims claims = Jwts.claims().setSubject(username).setSubject(password);
 		long nowMillis = System.currentTimeMillis();
 		long expMillis = nowMillis + tokenValidity;
 		Date exp = new Date(expMillis);
