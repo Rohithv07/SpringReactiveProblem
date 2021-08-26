@@ -125,7 +125,6 @@ public class AccountUpdateServiceTest {
 
 	@AfterEach
 	public void tearDownTest() {
-		accountUpdateServiceImpl.deleteAccount(account.getAcc_id());
 		System.out.println("After Each called...");
 	}
 

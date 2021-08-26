@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 
 /**
  * The user can update the account details and AccountUpdateApplication updates
- * and also deletes the details if needed.
+ * details if needed.
  * 
  * @author group 5
  *

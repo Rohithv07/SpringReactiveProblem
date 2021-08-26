@@ -2,12 +2,10 @@ package com.example.service;
 
 import com.example.model.Accounts;
 
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * This is a service interface which have the methods for update,
- * delete operations
+ * This is a service interface which have the methods for update, operation
  * 
  * @author group 5
  *
@@ -21,13 +19,4 @@ public interface AccountUpdateService {
 	 */
 	public Mono<Boolean> updateAccount(Accounts accounts);
 
-	public Flux<Accounts> getAllAccounts();
-
-	/**
-	 * Method for dealing with the deletion of the account
-	 * 
-	 * @param id
-	 * @return Mono&ltBoolean&gt
-	 */
-	public Mono<Boolean> deleteAccount(Integer id);
 }
