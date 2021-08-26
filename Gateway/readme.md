@@ -38,7 +38,7 @@ server.port = 8765
 
 spring.application.name=gateway
 
-#secret key - should be encrypted
+#secret key
 jwt.secret=secretkey
 #ignore null fields in json
 spring.jackson.default-property-inclusion=NON_NULL
