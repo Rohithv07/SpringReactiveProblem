@@ -33,7 +33,7 @@ import reactor.core.publisher.Mono;
  */
 @RestController
 @RequestMapping("/loan")
-@Tag(name = "Loan Account Table", description = "Apis for updating and deleting the account")
+@Tag(name = "Loan Account Table", description = "Apis for applying new loan and viewing the details")
 public class LoanController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoanController.class);

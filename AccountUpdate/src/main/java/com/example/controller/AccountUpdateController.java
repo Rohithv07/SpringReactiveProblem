@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono;
  *
  */
 @RestController
-@Tag(name = "Update Account Table", description = "Apis for updating and deleting the account")
+@Tag(name = "Update Account Table", description = "Apis for updating the account")
 public class AccountUpdateController {
 
 	/**
