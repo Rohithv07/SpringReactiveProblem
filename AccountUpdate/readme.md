@@ -2,6 +2,8 @@
 
 * The user who logs in can update his account details.
 
+* Token generated after login must be provided as Authorization header.
+
 ### Port : 
 
 * 8082

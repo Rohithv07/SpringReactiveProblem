@@ -8,9 +8,11 @@
 
 * The credentials are checked inside the database.
 
+* After login, a token is generated and this token must be provided as Authorization header to access other services
+
 ### Port :
 
-8080
+* 8080
 
 ### Url :
 
@@ -81,6 +83,9 @@ CREATE TABLE accounts (
 
 * Applied loan details are saved in a database.
 
+* Token generated after login must be provided as Authorization header.
+
+
 ### Port :
 
 * 8888
@@ -138,6 +143,8 @@ CREATE TABLE `loan` (
 
 * The user who logs in can update his account details.
 
+* Token generated after login must be provided as Authorization header.
+
 ### Port : 
 
 * 8082
@@ -173,7 +180,7 @@ spring.config.import=optional:configserver:http://localhost:8888
 
 ### Port :
 
-8761
+* 8761
 
 ### Url :
 
@@ -198,7 +205,7 @@ eureka.client.fetch-registry=false
 
 ### Port :
 
-8765
+* 8765
 
 ### Url :
 

@@ -6,9 +6,11 @@
 
 * The credentials are checked inside the database.
 
+* After login, a token is generated and this token must be provided as Authorization header to access other services
+
 ### Port :
 
-8080
+* 8080
 
 ### Url :
 

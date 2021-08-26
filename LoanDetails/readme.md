@@ -4,6 +4,8 @@
 
 * Applied loan details are saved in a database.
 
+* Token generated after login must be provided as Authorization header.
+
 ### Port :
 
 * 8888
