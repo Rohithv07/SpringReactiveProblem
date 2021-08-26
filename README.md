@@ -45,9 +45,9 @@ logging.level.org.springframework.web=DEBUG
 
 eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
 
-#secret key - should be encrypted
+#secret key
 jwt.secret=secretkey
-#3 minutes validity
+#15 minutes validity
 jwt.token.validity=900000
 #ignore null fields in json
 spring.jackson.default-property-inclusion=NON_NULL
@@ -237,7 +237,7 @@ server.port = 8765
 
 spring.application.name=gateway
 
-#secret key - should be encrypted
+#secret key
 jwt.secret=secretkey
 #ignore null fields in json
 spring.jackson.default-property-inclusion=NON_NULL
