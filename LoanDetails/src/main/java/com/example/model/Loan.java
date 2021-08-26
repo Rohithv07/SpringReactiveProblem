@@ -1,31 +1,68 @@
 package com.example.model;
 
-
 import org.springframework.data.annotation.Id;
 
-
+/**
+ * The model class for Loan
+ * 
+ * @author groupd 5
+ *
+ */
 public class Loan {
 
+	/**
+	 * Primary key for the loan
+	 */
 	@Id
 	private Integer loanId;
 
+	/**
+	 * This field holds the information about loan type
+	 */
 	private String loanType;
 
+	/**
+	 * This field holds the information about amaount;
+	 */
 	private Integer amount;
 
+	/**
+	 * This field holds the information about the duration of loan
+	 */
 	private Integer duration;
 
+	/**
+	 * This field holds the information about the rate of interest
+	 */
 	private Integer rateOfInterest;
 
+	/**
+	 * This field holds the information about the local date
+	 */
 	private String loanDate;
 
+	/**
+	 * This field holds the information about the account id which is a foreign key
+	 */
 	private Integer accId;
 
+	/**
+	 * No argument constructor
+	 */
 	public Loan() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * All argument constructor
+	 * @param loanId
+	 * @param loanType
+	 * @param amount
+	 * @param duration
+	 * @param rateOfInterest
+	 * @param loanDate
+	 * @param accId
+	 */
 	public Loan(Integer loanId, String loanType, Integer amount, Integer duration, Integer rateOfInterest,
 			String loanDate, Integer accId) {
 		super();

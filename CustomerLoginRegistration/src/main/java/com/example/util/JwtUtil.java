@@ -16,15 +16,34 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
+/**
+ * Component class for handling the token generation
+ * 
+ * @author group 5
+ *
+ */
 @Component
 public class JwtUtil {
 
+	/**
+	 * This field holds the jwt secret
+	 */
 	@Value("${jwt.secret}")
 	private String jwtSecret;
 
+	/**
+	 * This field holds the token validity
+	 */
 	@Value("${jwt.token.validity}")
 	private long tokenValidity;
 
+	/**
+	 * constitute the payload part of a JSON web token and represent a set of
+	 * information exchanged between two parties.
+	 * 
+	 * @param token
+	 * @return Claims
+	 */
 	public Claims getClaims(final String token) {
 		try {
 			Claims body = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
@@ -35,6 +54,13 @@ public class JwtUtil {
 		return null;
 	}
 
+	/**
+	 * Generates the token using username and password as subject
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	public String generateToken(String username, String password) {
 		Claims claims = Jwts.claims().setSubject(username).setSubject(password);
 		long nowMillis = System.currentTimeMillis();
@@ -44,6 +70,13 @@ public class JwtUtil {
 				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
 
+	/**
+	 * Various validation for the token is carried out
+	 * 
+	 * @param token
+	 * @throws JwtTokenMalformedException
+	 * @throws JwtTokenMissingException
+	 */
 	public void validateToken(final String token) throws JwtTokenMalformedException, JwtTokenMissingException {
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
