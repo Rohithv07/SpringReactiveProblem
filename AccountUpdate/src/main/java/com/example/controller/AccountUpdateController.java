@@ -28,7 +28,7 @@ import reactor.core.publisher.Mono;
 public class AccountUpdateController {
 
 	/**
-	 * The service interface for the account update
+	 * The service interface for the account update {@link AccountUpdateService}
 	 * 
 	 */
 	@Autowired
@@ -48,6 +48,7 @@ public class AccountUpdateController {
 		account.setAcc_id(id);
 		accountUpdateService.updateAccount(account);
 		return Mono.just(ResponseEntity.ok().body(this.getResponse(account.getAcc_id(), "Account is Updated")));
+
 	}
 
 	/**
@@ -64,11 +65,6 @@ public class AccountUpdateController {
 
 		return Mono.just(ResponseEntity.accepted().body(response));
 	}
-
-//	@GetMapping("/update")
-//	public Flux<Accounts> getAllAccount() {
-//		return accountUpdateService.getAllAccounts();
-//	}
 
 	/**
 	 * The fields which is used as the response message for the API

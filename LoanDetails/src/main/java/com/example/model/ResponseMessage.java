@@ -1,8 +1,24 @@
 package com.example.model;
 
+/**
+ * This is a class that holds the details about the response message of the API
+ * 
+ * @author group 5
+ *
+ */
 public class ResponseMessage {
+
+	/**
+	 * This field holds the details about the status code
+	 */
 	private Integer statusCode;
+	/**
+	 * This field holds the details about the status
+	 */
 	private String status;
+	/**
+	 * This filed holds the details about the message
+	 */
 	private String message;
 
 	public Integer getStatusCode() {
@@ -28,4 +44,5 @@ public class ResponseMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 }

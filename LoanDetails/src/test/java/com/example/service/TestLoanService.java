@@ -27,8 +27,10 @@ public class TestLoanService {
 
 	@Test
 	public void testGetLoans() {
+		
+		Loan l1 = new Loan(4, "Educational Loan", 5000, 5, 2, "22-08-2019", 5);
 
-		service.applyLoan(new Loan(4, "Educational Loan", 500000, 5, 2, "22-08-2019", 1));
+		service.applyLoan(l1);
 
 		StepVerifier.create(service.getLoanDetails(4)).expectNextCount(4).expectComplete().verify();
 	}

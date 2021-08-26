@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * This is a service interface which have the method definition for update,
+ * This is a service interface which have the methods for update,
  * delete operations
  * 
  * @author group 5
@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
  */
 public interface AccountUpdateService {
 	/**
-	 * Method declaration for dealing with the updating of the account;
+	 * Method for dealing with the updating of the account;
 	 * 
 	 * @param accounts
 	 * @return Mono&ltBoolean&gt
@@ -24,7 +24,7 @@ public interface AccountUpdateService {
 	public Flux<Accounts> getAllAccounts();
 
 	/**
-	 * Method declaration for dealing with the deletion of the account
+	 * Method for dealing with the deletion of the account
 	 * 
 	 * @param id
 	 * @return Mono&ltBoolean&gt
