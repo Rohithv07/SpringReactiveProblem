@@ -32,12 +32,6 @@ public class AccountUpdateControllerTest {
 	}
 
 	@Test
-	public void testDeleteAccount_GivenId() {
-		Mockito.when(accountUpdateService.deleteAccount(1)).thenReturn(Mono.just(true));
-		webTestClient.delete().uri("/update/1").exchange().expectStatus().isAccepted();
-	}
-
-	@Test
 	public void testUpdateAccount_updateAccountType() {
 		account.setAcc_type("type");
 		Mockito.when(accountUpdateService.updateAccount(account)).thenReturn(Mono.just(true));

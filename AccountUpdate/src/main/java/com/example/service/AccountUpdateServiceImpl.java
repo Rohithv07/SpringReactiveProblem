@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.example.model.Accounts;
 import com.example.repository.AccountRepository;
 
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -32,24 +31,6 @@ public class AccountUpdateServiceImpl implements AccountUpdateService {
 	public Mono<Boolean> updateAccount(Accounts accounts) {
 		try {
 			accountRepository.save(accounts).block();
-		} catch (Exception e) {
-			return Mono.just(Boolean.FALSE);
-		}
-		return Mono.just(Boolean.TRUE);
-	}
-
-	@Override
-	public Flux<Accounts> getAllAccounts() {
-		return accountRepository.findAll();
-	}
-
-	/**
-	 * The method implementation for the delete account {@link AccountUpdateService}
-	 */
-	@Override
-	public Mono<Boolean> deleteAccount(Integer id) {
-		try {
-			accountRepository.deleteById(id).block();
 		} catch (Exception e) {
 			return Mono.just(Boolean.FALSE);
 		}

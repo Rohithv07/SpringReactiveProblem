@@ -3,7 +3,6 @@ package com.example.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Mono;
 
 /**
- * Contains the end points to update and delete the account details
+ * Contains the end points to update account details
  * 
  * @author group 5
  *
@@ -49,21 +48,6 @@ public class AccountUpdateController {
 		accountUpdateService.updateAccount(account);
 		return Mono.just(ResponseEntity.ok().body(this.getResponse(account.getAcc_id(), "Account is Updated")));
 
-	}
-
-	/**
-	 * The rest end point which deletes the account details for the provided id
-	 * 
-	 * @param id
-	 * @return {@link ResponseMessage}
-	 */
-	@DeleteMapping("/update/{id}")
-	@Operation(description = "Endpoint for deleting the account")
-	public Mono<ResponseEntity<ResponseMessage>> deleteAccount(@PathVariable Integer id) {
-		accountUpdateService.deleteAccount(id);
-		ResponseMessage response = getResponse(id, "Employee Deleted");
-
-		return Mono.just(ResponseEntity.accepted().body(response));
 	}
 
 	/**
